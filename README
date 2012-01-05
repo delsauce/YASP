@@ -1,0 +1,6 @@
+The YASP (Yet-Another-Serial-Parser) library is a simple to use command parser based on a LUA-like pattern matching lib ().  It's first use is for parsing serial data on the Arduino, but could be easily extended.  At the moment it will worj with any interface that uses the Arduino Print class.  It is not particularly small or fast, but it is easy to setup and use, which is it's main purpose.
+
+See the examples folder for a sketch that illustrates basic usage.
+
+The YASP.h header file includes some references to resources that describe LUA pattern matching in more detail.
+
