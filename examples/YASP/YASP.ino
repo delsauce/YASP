@@ -26,7 +26,8 @@ yaspCommand_t cmds[] =
   { "^debug$", "debug : Return current debug state", debug },
   { "^debug on$", "debug on : Set debug on", debugOn },
   { "^debug off$", "debug off : Set debug off", debugOff },
-  { "^Kp ([-+]?[%d]*%.?[%d]+)$", "Kp <float value> : Set proportional gain", setKp },  // match a command word and a float number
+  { "^Kp (%d+)$", "Kp <integer> : Set proportional gain", setKp },  // match a command word and an integer arg
+  //{ "^Kp ([-+]?[%d]*%.?[%d]+)$", "Kp <float value> : Set proportional gain", setKp },  // match a command word and a float number
   { 0, 0, 0 }
 };
 
@@ -69,11 +70,9 @@ yaspCBReturn_t setKp(MatchState *ms)
   {
     char buf[20];
  
-    Serial.print("Captured: ");
+    Serial.print("Kp: ");
     ms->GetCapture(&buf[0], 0);
-      
-    float foo = atof(&buf[0]);
-    foo -= 1;
+    int foo = atoi(&buf[0]);  
     Serial.println(foo);
     
     return YASP_STATUS_NONE;
